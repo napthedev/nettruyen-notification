@@ -253,7 +253,10 @@ setInterval(async () => {
           )?.innerText;
 
           if (latestChapter !== existingComic.latestChapter) {
-            await Comic.findOneAndUpdate(existingComic, { latestChapter });
+            await Comic.findOneAndUpdate(
+              { _id: existingComic._id },
+              { latestChapter }
+            );
 
             const splittedSubscriptions = splitArray(item.subscriptions, 10);
             for (const subscriptionGroup of splittedSubscriptions) {
