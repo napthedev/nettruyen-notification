@@ -1,6 +1,6 @@
-import { Slide, toast } from "react-toastify";
-
 import { Subscription } from "../shared/types";
+import { toast } from "react-toastify";
+import { toastifyDefaultConfig } from "../shared/constants";
 
 const publicVapidKey = import.meta.env.VITE_VAPID_KEY;
 
@@ -27,17 +27,10 @@ export const handleRegistration = async (): Promise<Subscription> => {
     const { expirationTime, ...rest } = parsed;
     return rest;
   } catch (error) {
-    toast.error("Có lỗi đã xảy ra khi yêu cầu quyền thông báo", {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      transition: Slide,
-    });
+    toast.error(
+      "Có lỗi đã xảy ra khi yêu cầu quyền thông báo",
+      toastifyDefaultConfig
+    );
     throw new Error("Something went wrong");
   }
 };
