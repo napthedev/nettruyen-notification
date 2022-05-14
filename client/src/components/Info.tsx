@@ -37,7 +37,9 @@ const Info: FC<{
               />
               <div>
                 <a
-                  href={`http://www.nettruyenco.com/truyen-tranh/${item._id}`}
+                  href={`${import.meta.env.VITE_NETTRUYEN_URL}truyen-tranh/${
+                    item._id
+                  }`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xl"

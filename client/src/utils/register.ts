@@ -2,7 +2,7 @@ import { Slide, toast } from "react-toastify";
 
 import { Subscription } from "../shared/types";
 
-const publicVapidKey = import.meta.env.VITE_PUBLIC_VAPID_KEY;
+const publicVapidKey = import.meta.env.VITE_VAPID_KEY;
 
 export const register = async () => {
   const register = await navigator.serviceWorker.register("/worker.js");

@@ -115,7 +115,7 @@ const Main: FC<{
           autoFocus
         />
         <h1 className="text-gray-400 break-all break-words">
-          http://www.nettruyenco.com/truyen-tranh/
+          {import.meta.env.VITE_NETTRUYEN_URL}truyen-tranh/
           <span className="font-bold italic">id-truyen</span>
         </h1>
       </div>

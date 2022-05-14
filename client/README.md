@@ -3,7 +3,7 @@
 .env file
 
 ```env
-VITE_PUBLIC_VAPID_KEY=generated_key
-VITE_PUBLIC_SERVER_URL=http://localhost:5000
-NETTRUYEN_URL=http://www.nettruyenco.com/
+VITE_VAPID_KEY=generated_key
+VITE_SERVER_URL=http://localhost:5000
+VITE_NETTRUYEN_URL=http://www.nettruyenco.com/
 ```
