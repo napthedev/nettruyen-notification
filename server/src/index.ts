@@ -201,6 +201,11 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is listening on port ${port}`));
 
 setInterval(async () => {
+  const startTime = new Date().toLocaleString();
+  const message = `Operation at ${startTime} took: `;
+
+  console.time(message);
+
   const existingSubscriptions =
     (await Subscriptions.find()) as SubscriptionType[];
 
@@ -295,4 +300,6 @@ setInterval(async () => {
       })
     );
   }
-}, 1000 * 60);
+
+  console.timeEnd(message);
+}, 1000 * 60 * 5);
