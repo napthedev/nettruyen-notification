@@ -57,7 +57,9 @@ app.post("/info", async (req, res) => {
       endpoint: body.endpoint,
       p256dh: body.keys.p256dh,
       auth: body.keys.auth,
-    }).populate("comicId");
+    })
+      .populate("comicId")
+      .sort({ createdAt: -1 });
 
     res.send(existingSubscriptions.map((item) => item.comicId).filter(Boolean));
   } catch (error) {

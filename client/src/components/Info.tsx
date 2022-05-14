@@ -22,7 +22,7 @@ const Info: FC<{
   if (subscription === null || info.length === 0) return <></>;
 
   return (
-    <div className="flex justify-center mt-10 md:mt-16">
+    <div className="flex justify-center my-10 md:my-16">
       <div className="w-full max-w-[1000px] mx-3">
         <h1 className="text-2xl mb-6">Những truyện đang theo dõi</h1>
         <div className="w-full flex flex-col items-stretch gap-3">
@@ -30,9 +30,7 @@ const Info: FC<{
             <div key={item._id} className="flex gap-3">
               <img
                 className="w-[80px] h-[120px] object-cover"
-                src={`https://images.weserv.nl/?url=${encodeURIComponent(
-                  item.cover
-                )}&w=80&h=120&fit=cover`}
+                src={item.cover}
                 alt=""
               />
               <div>
