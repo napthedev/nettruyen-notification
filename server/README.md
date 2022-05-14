@@ -8,3 +8,6 @@ SECRET_VAPID_KEY=generated_key
 NETTRUYEN_URL=http://www.nettruyenco.com/
 MONGODB_URI=mongodb://localhost:27017/nettruyen-notification
 ```
+
+How to generate Vapid Keys?
+Run `npx web-push generate-vapid-keys`

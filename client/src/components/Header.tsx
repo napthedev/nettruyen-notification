@@ -13,7 +13,7 @@ const Header: FC = () => {
 
         <div className="flex items-center">
           <a
-            href="https://github.com"
+            href="https://github.com/napthedev/nettruyen-notification"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1"
