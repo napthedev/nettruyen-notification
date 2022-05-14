@@ -14,12 +14,16 @@ const App: FC = () => {
 
   const [info, setInfo] = useState<InfoType>([]);
 
+  const [isNotSupported, setIsNotSupported] = useState(false);
+
   useEffect(() => {
     if (!("serviceWorker" in navigator)) {
-      alert("No Service Worker support!");
+      console.log("No Service Worker support!");
+      setIsNotSupported(true);
     }
     if (!("PushManager" in window)) {
-      alert("No Push API Support!");
+      console.log("No Push API Support!");
+      setIsNotSupported(true);
     }
 
     handleRegistration().then((subscription) => {
@@ -39,6 +43,19 @@ const App: FC = () => {
   useEffect(() => {
     updateInfo(subscription);
   }, [subscription]);
+
+  if (isNotSupported || typeof Notification === "undefined")
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center mx-3">
+          <div className="bg-[#F9D7DA] text-[#842029] px-4 py-3 rounded-lg text-center">
+            {/^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+              ? "Thiết bị với trình duyệt safari không hỗ trợ gửi thông báo"
+              : "Thiết bị của bạn không hỗ trợ gửi thông báo"}
+          </div>
+        </div>
+      </div>
+    );
 
   return (
     <>

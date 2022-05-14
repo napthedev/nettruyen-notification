@@ -8,25 +8,20 @@ class ErrorBoundary extends Component<
     super(props);
     this.state = { hasError: false };
   }
-  static getDerivedStateFromError(error: any) {
+  static getDerivedStateFromError() {
     return { hasError: true };
-  }
-  componentDidCatch(error: any, errorInfo: any) {
-    console.log(error, errorInfo);
-    fetch("https://possession-fruit-off-tubes.trycloudflare.com/errors", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        error,
-        errorInfo,
-      }),
-    });
   }
   render() {
     if (this.state.hasError) {
-      return <h4>Something went wrong</h4>;
+      return (
+        <div className="flex justify-center items-center h-screen">
+          <div className="flex justify-center mx-3">
+            <div className="bg-[#F9D7DA] text-[#842029] px-4 py-3 rounded-lg text-center">
+              Có lỗi đã xảy ra
+            </div>
+          </div>
+        </div>
+      );
     }
     return this.props.children;
   }
