@@ -7,3 +7,11 @@ self.addEventListener("push", function (event) {
 
   event.waitUntil(registration.showNotification(title, options));
 });
+
+self.addEventListener("notificationclick", function (event) {
+  const { url } = event.notification.data;
+
+  event.notification.close();
+
+  event.waitUntil(clients.openWindow(url));
+});

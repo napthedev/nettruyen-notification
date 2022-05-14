@@ -1,13 +1,10 @@
+import { Slide, toast } from "react-toastify";
+
+import { Subscription } from "../shared/types";
+
 const publicVapidKey = import.meta.env.VITE_PUBLIC_VAPID_KEY;
 
-export const send = async () => {
-  if (!("serviceWorker" in navigator)) {
-    throw new Error("No Service Worker support!");
-  }
-  if (!("PushManager" in window)) {
-    throw new Error("No Push API Support!");
-  }
-
+export const register = async () => {
   const register = await navigator.serviceWorker.register("/worker.js");
 
   let subscription = await register.pushManager.getSubscription();
@@ -19,13 +16,28 @@ export const send = async () => {
     });
   }
 
-  console.log(subscription);
+  return subscription;
+};
 
-  // await fetch("http://localhost:5000/subscribe", {
-  //   method: "POST",
-  //   body: JSON.stringify(subscription),
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // });
+export const handleRegistration = async (): Promise<Subscription> => {
+  try {
+    const subscription = await register();
+    const parsed = JSON.parse(JSON.stringify(subscription));
+    // eslint-disable-next-line
+    const { expirationTime, ...rest } = parsed;
+    return rest;
+  } catch (error) {
+    toast.error("Có lỗi đã xảy ra khi yêu cầu quyền thông báo", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Slide,
+    });
+    throw new Error("Something went wrong");
+  }
 };
