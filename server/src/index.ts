@@ -200,9 +200,9 @@ app.post("/unsubscribe", async (req, res) => {
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is listening on port ${port}`));
 
-setInterval(async () => {
+const runUpdateOperation = async () => {
   const startTime = new Date().toLocaleString();
-  const message = `Operation at ${startTime} took: `;
+  const message = `Operation at ${startTime} took`;
 
   console.time(message);
 
@@ -305,4 +305,8 @@ setInterval(async () => {
   }
 
   console.timeEnd(message);
-}, 1000 * 60 * 5);
+
+  setTimeout(runUpdateOperation, 1000 * 60 * 5);
+};
+
+runUpdateOperation();
