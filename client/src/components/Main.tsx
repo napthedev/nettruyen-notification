@@ -67,7 +67,7 @@ const Main: FC<{
 
     if (!textAreaValue.trim()) return;
 
-    const list = textAreaValue.trim().split("\n");
+    const list = textAreaValue.trim().split("\n").filter(Boolean);
 
     setTextAreaValue("");
     setIsModalOpened(false);
@@ -89,7 +89,8 @@ const Main: FC<{
         })
         .catch((err) =>
           toast.error(
-            err?.response?.data?.message || `Có lỗi đã xảy ra: ${item}`,
+            `${err?.response?.data?.message}: ${item}` ||
+              `Có lỗi đã xảy ra: ${item}`,
             toastifyDefaultConfig
           )
         )
