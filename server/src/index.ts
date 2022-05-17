@@ -278,7 +278,7 @@ const runUpdateOperation = async () => {
                         icon: "https://i.imgur.com/X7XQ9g5.png",
                         image: existingComic.cover,
                         data: {
-                          url: `${client.defaults.baseURL}/truyen-tranh/${existingComic._id}`,
+                          url: `${client.defaults.baseURL}truyen-tranh/${existingComic._id}`,
                         },
                       }),
                       {
