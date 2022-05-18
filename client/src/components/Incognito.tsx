@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 
-import { detectIncognito } from "../utils/detectIncognito";
+import { detectIncognito } from "detect-incognito";
 
 const Incognito: FC = () => {
   const [isIncognito, setIsIncognito] = useState(false);
