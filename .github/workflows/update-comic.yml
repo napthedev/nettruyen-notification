@@ -9,6 +9,11 @@ jobs:
   update-readme:
     name: Update Comic
     runs-on: ubuntu-latest
+    env:
+      PUBLIC_VAPID_KEY: ${{ secrets.PUBLIC_VAPID_KEY }}
+      SECRET_VAPID_KEY: ${{ secrets.SECRET_VAPID_KEY }}
+      NETTRUYEN_URL: ${{ secrets.NETTRUYEN_URL }}
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
     defaults:
       run:
         working-directory: ./server
