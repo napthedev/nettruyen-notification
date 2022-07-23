@@ -1,6 +1,6 @@
 # NetTruyen Notification
 
-A push notification system for [NetTruyen](http://nettruyenco.com) using Service Worker
+A push notification system for [NetTruyen](http://nettruyenme.com) using Service Worker
 
 ## Live demo
 
