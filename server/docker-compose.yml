@@ -1,0 +1,19 @@
+version: "3"
+services:      
+  nettruyen-notification-mongodb:
+    image: mongo:4.2
+    environment:
+      - MONGO_INITDB_DATABASE=nettruyen-notification
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=123456
+    networks:
+      - nettruyen-network
+    command: mongod
+    ports:
+      - "27017:27017"
+    volumes:
+      - "./data/nettruyen-notification-mongodb-volume:/data/db"
+
+networks:
+  nettruyen-network:
+    driver: bridge
